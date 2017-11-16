@@ -11,8 +11,11 @@ class User extends CI_Controller {
 
   public function index() {
     // check if user logged in
-    if (isset($_SESSION['logged_in'])) {
-      echo "Home";
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+      $this->load->view('user/header');
+      $this->load->view('user/sidebar');
+      $this->load->view('user/home/home');
+      $this->load->view('user/footer');
     } else {
       $this->login();
     }
@@ -94,7 +97,7 @@ class User extends CI_Controller {
 
         // user login ok
         $data->success = "Login success";
-        $this->load->view('user/login/login', $data);
+        $this->index();
       } else {
 
         // login failed
@@ -103,6 +106,30 @@ class User extends CI_Controller {
         // send error to the view
         $this->load->view('user/login/login', $data);
       }
+    }
+  }
+
+  public function logout() {
+
+    // create the data object
+    $data = new stdClass();
+
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+
+      // remove session datas
+      foreach ($_SESSION as $key => $value) {
+        unset($_SESSION[$key]);
+      }
+
+      $data->error = "You're logged out";
+
+      // user logout ok
+      $this->load->view('user/login/login', $data);
+    } else {
+
+      // there user was not logged in, we cannot logged him out,
+      // redirect him to site root
+      $this->index();
     }
   }
 }
