@@ -12,6 +12,7 @@ class User_model extends CI_Model {
   /**
   * function for create user
   * using username, email and password as parameter
+  * return true if insert success
   */
   public function create_user($username, $email, $password) {
     $data = array(

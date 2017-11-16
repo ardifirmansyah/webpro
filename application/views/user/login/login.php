@@ -1,5 +1,6 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<!DOCTYPE html>
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -28,13 +29,13 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition register-page">
-  <div class="register-box">
-    <div class="register-logo">
-      <a href="../../index2.html"><b>IFLAB</b></a>
+<body class="hold-transition login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="<?php echo base_url(); ?>"><b>IFLAB</b></a>
     </div>
-
-    <div class="register-box-body">
+    <!-- /.login-logo -->
+    <div class="login-box-body">
       <?php if (validation_errors()) : ?>
         <div class="col-md-12">
           <div class="alert alert-danger" role="alert">
@@ -56,23 +57,16 @@
           </div>
         </div>
       <?php endif; ?>
-      <p class="login-box-msg">Register a new membership</p>
+      <p class="login-box-msg">Sign in to start your session</p>
+
       <form action="" method="post">
         <div class="form-group has-feedback">
           <input type="text" class="form-control" id="username" name="username" placeholder="Username">
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" id="password" name="password"  placeholder="Password">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Retype password">
-          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
         <div class="row">
           <div class="col-xs-8">
@@ -80,17 +74,18 @@
           </div>
           <!-- /.col -->
           <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <a href="<?php echo base_url(); ?>" class="text-center">I already have a membership</a>
+      <a href="<?php echo base_url(); ?>/user/register" class="text-center">Register a new membership</a>
+
     </div>
-    <!-- /.form-box -->
+    <!-- /.login-box-body -->
   </div>
-  <!-- /.register-box -->
+  <!-- /.login-box -->
 
   <!-- jQuery 3 -->
   <script src="<?php echo base_url(); ?>assets/adminLTE/bower_components/jquery/dist/jquery.min.js"></script>
